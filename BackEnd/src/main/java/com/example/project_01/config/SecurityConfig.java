@@ -36,16 +36,7 @@ public class SecurityConfig {
                     request.requestMatchers("/log").permitAll().
 //                            requestMatchers("/book").permitAll().
                             requestMatchers("/book/**").permitAll().
-                            requestMatchers("/loan").hasAuthority("ADMIN").
-
-                            requestMatchers("/pay").hasAuthority("ADMIN").
-                            requestMatchers("/account").hasAuthority("ADMIN").
-                            requestMatchers("/transaction").hasAuthority("ADMIN").
-                            requestMatchers("/user").hasAuthority("ADMIN").
-                            requestMatchers("/withdraw").hasAuthority("USER")
-
-
-                            .anyRequest().authenticated();
+                            anyRequest().authenticated();
                 })
                 .addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
